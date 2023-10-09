@@ -1,24 +1,39 @@
+const rck = document.querySelector ('#rck');
+const ppr = document.querySelector ('#ppr');
+const scs = document.querySelector ('#scs');
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(choice) {
-  choice = Math.floor(Math.random() * (3 - 1) + 1);
-  return choice;
+  choice = ['Rock', 'Paper', 'Scissors'];
+  return choice[Math.floor(Math.random() * choice.length)];
 }
 
-function playerSelection(choice) {
-	choice = Number(window.prompt("Type a number", ""));
-  return choice;
-}
-
-function playRound(playerSelection, getComputerChoice) {
-  if ((playerSelection == 1 && getComputerChoice == 3) || (playerSelection == 2 && getComputerChoice == 1) || (playerSelection == 3 && getComputerChoice == 2)) {
-  	console.log ("Win");
-  } else if (playerSelection == getComputerChoice) {
-  	console.log ("Draw");
+function playRound(playerSelection) {
+  let computerChoice = getComputerChoice()
+  if ((playerSelection == 'Rock' && computerChoice == 'Scissors') || (playerSelection == 'Paper' && computerChoice == 'Rock') || (playerSelection == 'Scissors' && computerChoice == 'Paper')) {
+    playerScore += 1;
+    console.log('You Win! '+playerSelection+' beats '+computerChoice+'!');
+    document.querySelector('#result').textContent = 'You Win! '+playerSelection+' beats '+computerChoice+'!';
+  } else if (playerSelection == computerChoice) {
+  	console.log ("It's a Draw");
+    document.querySelector('#result').textContent = "It's a Draw";
   } else {
-    console.log ("Lose")
+    computerScore += 1;
+    console.log('You Lose! '+computerChoice+' beats '+playerSelection+'!');
+    document.querySelector('#result').textContent = 'You Lose! '+computerChoice+' beats '+playerSelection+'!'; 
   }
+  document.querySelector('#score').textContent = 'Yours score: '+playerScore+' computer score: '+computerScore;
 }
 
+rck.addEventListener('click', () => {
+  playRound('Rock');
+});
 
-getComputerChoice();
-playerSelection ();
-console.log (playerSelection);
+ppr.addEventListener('click', () => {
+  playRound('Paper');
+});
+
+scs.addEventListener('click', () => {
+  playRound('Scissors');
+});
