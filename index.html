@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="game.js" defer></script> 
+    <script src="https://kit.fontawesome.com/7f6dcfd3b3.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <button id="rck">Rock</button>
-    <button id="ppr">Paper</button>
-    <button id="scs">Scissors</button>
-    <div id="result"></div>
-    <div id="score"></div>
+    <div class="container">
+        <div class="buttons_container">
+            <button id="rock"><i class="fa-regular fa-hand-back-fist"></i></button>
+            <button id="paper"><i class="fa-regular fa-hand"></i></button>
+            <button id="scissors"><i class="fa-regular fa-hand-scissors"></i></button>
+        </div>
+        <div id="result"></div>
+        <div id="score"></div>
+        <button id="reset" class="hidden">Reset</button>
+    </div>
 </body>
 </html>
